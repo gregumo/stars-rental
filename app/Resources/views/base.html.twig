@@ -3,11 +3,23 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        {{ include("::navbar.html.twig") }}
+
+        <div class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        {% javascripts '@GregumoStarsRentalBundle/Resources/public/js/main.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
         {% block javascripts %}{% endblock %}
+
     </body>
 </html>

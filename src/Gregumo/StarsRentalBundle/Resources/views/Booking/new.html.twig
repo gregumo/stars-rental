@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Nouvelle réservation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('booking') }}">
+            Retour à la liste
+        </a>
+    </li>
+</ul>
+{% endblock %}

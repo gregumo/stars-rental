@@ -1,3 +1,4 @@
-app:
-    resource: "@AppBundle/Controller/"
+gregumo_stars_rental:
+    resource: "@GregumoStarsRentalBundle/Controller/"
     type:     annotation
+    prefix:   /

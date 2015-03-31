@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des réservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date de création</th>
+                <th>Client</th>
+                <th>Véhicule</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Surclassement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('booking_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.customer.completeName }}</td>
+                <td>{{ entity.vehicle.name }}</td>
+                <td>{% if entity.start %}{{ entity.start|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.end %}{{ entity.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if entity.upgrade %}
+                        <span class="label label-success">Oui</span>
+                    {% else %}
+                        <span class="label label-danger">Non</span>
+                    {% endif %}
+
+                </td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('booking_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('booking_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if hideAddButton %}
+        <div class="alert alert-danger" role="alert">
+            Vous ne pouvez pas créer une nouvelle réservation. Au moins un véhicule disponible et un client doivent exister pour pouvoir créer une réservation.
+        </div>
+    {% else %}
+        <ul>
+            <li>
+                <a href="{{ path('booking_new') }}">Nouvelle réservation</a>
+            </li>
+        </ul>
+    {% endif %}
+
+
+{% endblock %}
