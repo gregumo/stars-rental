@@ -7,18 +7,15 @@ use Gregumo\StarsRentalBundle\Entity\Customer;
 use Gregumo\StarsRentalBundle\Entity\Type;
 use Gregumo\StarsRentalBundle\Entity\Vehicle;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bridge\Monolog\Logger;
 
 class BookingUpgrader
 {
 
     private $em;
-    private $logger;
 
-    public function __construct(EntityManager $entityManager, Logger $logger)
+    public function __construct(EntityManager $entityManager)
     {
         $this->em = $entityManager;
-        $this->logger = $logger;
     }
 
 

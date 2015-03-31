@@ -4,4 +4,4 @@ services:
 
     gregumo_starsrental.utils.booking_upgrader:
         class:     Gregumo\StarsRentalBundle\Utils\BookingUpgrader
-        arguments: [ "@doctrine.orm.entity_manager", "@logger" ]
+        arguments: [ "@doctrine.orm.entity_manager" ]
